@@ -20,6 +20,12 @@ export type IGenericErrorMessage = {
   message: string;
 };
 
+export interface ICategory{
+  id:string;
+  title: string;
+  createdAt: string;
+}
+
 export interface IDepartment {
   id: string;
   title: string;

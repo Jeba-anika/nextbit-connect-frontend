@@ -1,6 +1,9 @@
 "use client";
+import CategorySection from "@/components/ui/CategorySection";
 import InfoSection from "@/components/ui/InfoSection";
 import Navbar from "@/components/ui/Navbar";
+import { useCategoriesQuery } from "@/redux/api/categoryApi";
+import { useDepartmentsQuery } from "@/redux/api/departmentApi";
 import { Layout } from "antd";
 import { redirect } from "next/navigation";
 const { Header, Footer, Content } = Layout;
@@ -27,6 +30,9 @@ const HomePage = () => {
     color: "#fff",
     backgroundColor: "#7dbcea",
   };
+
+ const {data} = useCategoriesQuery({})
+ console.log(data)
   return (
     <div>
       
@@ -36,7 +42,8 @@ const HomePage = () => {
         }}
       >
         <Header style={headerStyle}><Navbar/></Header>
-        <Content style={contentStyle}><InfoSection/></Content>
+        <Content style={contentStyle}><InfoSection/>
+        <CategorySection/></Content>
         <Footer style={footerStyle}>Footer</Footer>
       </Layout>
     </div>
