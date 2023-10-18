@@ -31,8 +31,6 @@ const HomePage = () => {
     backgroundColor: "#7dbcea",
   };
 
- const {data} = useCategoriesQuery({})
- console.log(data)
   return (
     <div>
       
@@ -42,8 +40,10 @@ const HomePage = () => {
         }}
       >
         <Header style={headerStyle}><Navbar/></Header>
-        <Content style={contentStyle}><InfoSection/>
-        <CategorySection/></Content>
+        <Content style={contentStyle}>
+          <InfoSection/>
+        <CategorySection/>
+        </Content>
         <Footer style={footerStyle}>Footer</Footer>
       </Layout>
     </div>

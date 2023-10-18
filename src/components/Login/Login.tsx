@@ -10,9 +10,10 @@ import { storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/schemas/login";
+import Link from "next/link";
 
 type FormValues = {
-  id: string;
+  email: string;
   password: string;
 };
 
@@ -25,12 +26,12 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
       const res = await userLogin({ ...data }).unwrap();
-      // console.log(res);
-      if (res?.accessToken) {
-        router.push("/profile");
+      console.log(res);
+      if (res?.data?.accessToken) {
+        router.push("/");
         message.success("User logged in successfully!");
       }
-      storeUserInfo({ accessToken: res?.accessToken });
+      storeUserInfo({ accessToken: res?.data?.accessToken });
       // console.log(res);
     } catch (err: any) {
       console.error(err.message);
@@ -60,10 +61,10 @@ const LoginPage = () => {
           <Form submitHandler={onSubmit} resolver={yupResolver(loginSchema)}>
             <div>
               <FormInput
-                name="id"
-                type="text"
+                name="email"
+                type="email"
                 size="large"
-                label="User Id"
+                label="Email"
                 required
               />
             </div>
@@ -80,10 +81,11 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" danger htmlType="submit">
               Login
             </Button>
           </Form>
+          <p className="text-center">Don&apos;t have an account? Please <Link href="/register">Register</Link></p>
         </div>
       </Col>
     </Row>

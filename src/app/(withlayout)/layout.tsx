@@ -1,5 +1,6 @@
 "use client";
 import Contents from "@/components/ui/Contents";
+import Navbar from "@/components/ui/Navbar";
 import SideBar from "@/components/ui/Sidebar";
 import { isLoggedIn } from "@/services/auth.service";
 import { Layout, Row, Space, Spin } from "antd";
@@ -36,6 +37,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout hasSider>
+      <Navbar/>
       <SideBar />
       <Contents>{children}</Contents>
     </Layout>
