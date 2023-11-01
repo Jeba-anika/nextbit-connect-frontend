@@ -14,9 +14,10 @@ const HomePage = () => {
     textAlign: "center",
     color: "#fff",
     height: 64,
-    // paddingInline: 50,
+    position: "fixed",
+    width: "100%",
     lineHeight: "64px",
-    backgroundColor: "#DEC3BE",
+    backgroundColor: "#fff",
   };
   const contentStyle: React.CSSProperties = {
     // textAlign: "center",
@@ -42,7 +43,8 @@ const HomePage = () => {
         <Header style={headerStyle}><Navbar/></Header>
         <Content style={contentStyle}>
           <InfoSection/>
-        <CategorySection/>
+          {/* <CategorySection/> */}
+        
         </Content>
         <Footer style={footerStyle}>Footer</Footer>
       </Layout>

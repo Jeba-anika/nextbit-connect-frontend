@@ -147,6 +147,21 @@ export interface IBuilding {
   updatedAt: string;
   deletedAt?: null;
 }
+export interface IService {
+  id: string;
+  title: string;
+  createdAt: string;
+  speed: string;
+  price: number;
+  time: string;
+  talkTime: string;
+  location: string;
+  description: string;
+  availability: boolean;
+  rating: number
+  categoryId: string
+  
+}
 
 export interface IRoom {
   id: string;

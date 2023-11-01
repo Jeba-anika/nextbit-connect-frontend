@@ -37,7 +37,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout hasSider>
-      <Navbar/>
+      {/* <Navbar/> */}
       <SideBar />
       <Contents>{children}</Contents>
     </Layout>
