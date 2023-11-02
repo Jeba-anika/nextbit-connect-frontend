@@ -1,8 +1,6 @@
-import { useCategoriesQuery } from "@/redux/api/categoryApi";
 import { Card } from "antd";
 
 const CategorySection = () => {
-  const { data } = useCategoriesQuery({});
   return (
     <div style={{
         backgroundColor: "#B9314F"

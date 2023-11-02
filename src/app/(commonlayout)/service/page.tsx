@@ -25,15 +25,9 @@ const ServicesPage = () => {
   }
   return (
     <div className="mx-48 my-20">
-      <Row gutter={40}>
-        {data?.data?.data?.map((service: any) => (
-          <Col key={service?.id} xs={24} sm={12} md={12} lg={8}>
-            
-          </Col>
-        ))}
-      </Row>
-      <Row gutter={16}>
-        {data?.data?.data?.map((service: any) => (
+      
+      <Row gutter={[40,40]}>
+        {data?.services?.data?.data?.map((service: any) => (
           <Col key={service?.id} xs={24} sm={12} md={12} lg={8}>
             <div className="shadow">
                 <NBServiceCard service={service}/>

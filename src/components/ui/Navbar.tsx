@@ -15,11 +15,16 @@ import {
 } from "@ant-design/icons";
 
 const Navbar = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  
   const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(isLoggedIn());
   const { role } = getUserInfo() as any
-
-
 
   const { data, isLoading } = useCategoriesQuery({});
   console.log(data);
@@ -37,6 +42,9 @@ const Navbar = () => {
     })
   );
 
+  if (!isMounted) {
+    return null;
+  }else
   return (
     <div className="flex justify-around items-center h-full " >
       <div className="h-full">
@@ -47,7 +55,7 @@ const Navbar = () => {
       <div className="md:block hidden">
         <ul className="inline">
         <li className="inline">
-            <NavbarListItem label="Dashboard" link={`/${role}`} />
+            {role && <NavbarListItem label="Dashboard" link={`/${role}`} />}
           </li>
           <li className="inline">
           <Dropdown menu={{ items }}>
@@ -89,7 +97,7 @@ const Navbar = () => {
       <div className={`absolute top-0 right-0 z-50 bg-red-100 w-2/3 h-screen ${isMenuOpened ? "block" : "hidden"}`}>
         <ul className="list-none">
             <li onClick={()=> setIsMenuOpened(false)} className="text-end text-xl pr-10 my-4  text-black font-bold cursor-pointer"><CloseOutlined /></li>
-            <li className="shadow"><NavbarListItem label="Dashboard" link={`/${role}`}/></li>
+            {role && <li className="shadow"><NavbarListItem label="Dashboard" link={`/${role}`}/></li>}
             <li className="shadow">
             <Dropdown menu={{ items }}>
               <a
@@ -114,6 +122,7 @@ const Navbar = () => {
             </li>
           </ul>
       </div>
+      
     </div>
   );
 };

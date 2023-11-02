@@ -41,7 +41,7 @@ const SideBar = () => {
           padding: "10px 0px",
         }}
       >
-        UMS
+        NBC
       </div>
       <Menu
         theme="dark"

@@ -5,8 +5,9 @@ import { Layout, Row, Space, Spin } from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 const { Header, Footer, Content } = Layout;
+import NBFooter from "@/components/ui/NBFooter";
 
-const CommonLayout = ({ children }: { children: React.ReactNode }) => {
+ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   const userLoggedIn = isLoggedIn();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -37,9 +38,9 @@ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
     textAlign: "center",
     color: "#fff",
     height: 64,
-    // paddingInline: 50,
+    width: "100%",
     lineHeight: "64px",
-    backgroundColor: "#DEC3BE",
+    backgroundColor: "#fff",
   };
   const contentStyle: React.CSSProperties = {
     // textAlign: "center",
@@ -66,10 +67,11 @@ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
         <Content style={contentStyle}>
           {children}
         </Content>
-        <Footer style={footerStyle}>Footer</Footer>
+        <Footer ><NBFooter/></Footer>
       </Layout>
     </div>
   );
 };
 
-export default CommonLayout;
+export default CommonLayout
+

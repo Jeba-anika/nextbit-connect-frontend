@@ -1,3 +1,5 @@
+import { USER_ROLE } from "@/constants/role";
+
 export interface IMeta {
   limit: number;
   page: number;
@@ -24,6 +26,32 @@ export interface ICategory{
   id:string;
   title: string;
   createdAt: string;
+}
+
+export interface IService {
+  id: string;
+  title: string;
+  createdAt: string;
+  speed: string;
+  price: number;
+  time: string;
+  talkTime: string;
+  location: string;
+  description: string;
+  availability: boolean;
+  rating: number
+  categoryId: string
+}
+
+
+export interface IUser {
+  id: string,
+  name: string
+  email: string
+  role: USER_ROLE,
+  contactNo: string,
+  address: string,
+  district: string
 }
 
 export interface IDepartment {
@@ -147,21 +175,7 @@ export interface IBuilding {
   updatedAt: string;
   deletedAt?: null;
 }
-export interface IService {
-  id: string;
-  title: string;
-  createdAt: string;
-  speed: string;
-  price: number;
-  time: string;
-  talkTime: string;
-  location: string;
-  description: string;
-  availability: boolean;
-  rating: number
-  categoryId: string
-  
-}
+
 
 export interface IRoom {
   id: string;

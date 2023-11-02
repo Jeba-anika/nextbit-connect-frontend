@@ -31,6 +31,11 @@ export const sidebarItems = (role: string) => {
 
   const commonAdminSidebarItems: MenuProps["items"] = [
     {
+      label: <Link href={`/${role}/manage-users`}>Manage Users</Link>,
+      icon: <TableOutlined />,
+      key: `/${role}/manage-users`,
+    },
+    {
       label: <Link href={`/${role}/services`}>Services</Link>,
       icon: <TableOutlined />,
       key: `/${role}/services`,
@@ -113,7 +118,7 @@ export const sidebarItems = (role: string) => {
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
     {
-      label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
+      label: <Link href={`/${role}/admin`}>Manage Admins</Link>,
       icon: <TableOutlined />,
       key: `/${role}/admin`,
     },

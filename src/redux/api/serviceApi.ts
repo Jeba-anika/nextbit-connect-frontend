@@ -15,6 +15,12 @@ export const serviceApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
+      transformResponse: (response: any, meta: IMeta) => {
+        return {
+          services: response,
+          meta,
+        };
+      },
       providesTags: [tagTypes.services],
     }),
     // get single service
@@ -28,7 +34,7 @@ export const serviceApi = baseApi.injectEndpoints({
     // create a new service
     addService: build.mutation({
       query: (data) => ({
-        url: SERVICE_URL,
+        url: `${SERVICE_URL}/create-service`,
         method: "POST",
         data,
       }),

@@ -3,6 +3,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 const { Header: AntHeader } = Layout;
 
 const Header = () => {
@@ -37,6 +38,7 @@ const Header = () => {
           height: "100%",
         }}
       >
+        <Link href="/">Home</Link>
         <p
           style={{
             margin: "0px 5px",

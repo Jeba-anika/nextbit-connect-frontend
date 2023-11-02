@@ -1,6 +1,7 @@
 "use client";
 import CategorySection from "@/components/ui/CategorySection";
 import InfoSection from "@/components/ui/InfoSection";
+import NBFooter from "@/components/ui/NBFooter";
 import Navbar from "@/components/ui/Navbar";
 import { useCategoriesQuery } from "@/redux/api/categoryApi";
 import { useDepartmentsQuery } from "@/redux/api/departmentApi";
@@ -29,7 +30,8 @@ const HomePage = () => {
   const footerStyle: React.CSSProperties = {
     textAlign: "center",
     color: "#fff",
-    backgroundColor: "#7dbcea",
+    backgroundColor: "#fff",
+    padding: '0px'
   };
 
   return (
@@ -46,7 +48,7 @@ const HomePage = () => {
           {/* <CategorySection/> */}
         
         </Content>
-        <Footer style={footerStyle}>Footer</Footer>
+        <Footer style={footerStyle}><NBFooter/></Footer>
       </Layout>
     </div>
   );
