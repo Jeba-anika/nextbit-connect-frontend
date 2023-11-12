@@ -1,6 +1,7 @@
 "use client";
-import CategorySection from "@/components/ui/CategorySection";
-import InfoSection from "@/components/ui/InfoSection";
+import CategorySection from "@/components/ui/HomePage/CategorySection";
+import HomePageCarousel from "@/components/ui/HomePage/HomePageCarousel";
+import InfoSection from "@/components/ui/HomePage/InfoSection";
 import NBFooter from "@/components/ui/NBFooter";
 import Navbar from "@/components/ui/Navbar";
 import { useCategoriesQuery } from "@/redux/api/categoryApi";
@@ -44,6 +45,7 @@ const HomePage = () => {
       >
         <Header style={headerStyle}><Navbar/></Header>
         <Content style={contentStyle}>
+          {/* <HomePageCarousel/> */}
           <InfoSection/>
           {/* <CategorySection/> */}
         

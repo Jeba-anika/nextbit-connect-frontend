@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import infoPicture from '../../assets/about_section.png'
+import infoPicture from '../../../assets/about_section.png'
 
 const InfoSection = () => {
     return (
