@@ -35,7 +35,7 @@ const Navbar = () => {
     // router.push("/login");
   };
 
-  const items: MenuProps["items"] = data?.data.map(
+  const items: MenuProps["items"] = data?.data?.map(
     (category: any, index: number) => ({
       key: index,
       label: <Link href={`/${category.title}`}>{category.title}</Link>,
