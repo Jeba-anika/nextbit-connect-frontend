@@ -1,6 +1,5 @@
 "use client";
 import CategorySection from "@/components/ui/HomePage/CategorySection";
-import HomePageCarousel from "@/components/ui/HomePage/HomePageCarousel";
 import InfoSection from "@/components/ui/HomePage/InfoSection";
 import NBFooter from "@/components/ui/NBFooter";
 import Navbar from "@/components/ui/Navbar";

@@ -7,7 +7,8 @@ const InfoSection = () => {
             <div className='my-auto mx-10 xl:mx-48 text-black' >
                 <p style={{
                     color: "#B9314F",
-                }} className="font-bold text-3xl">Welcome to Nextbit Connect</p>
+                }} className="font-bold text-3xl">Welcome to Nextbit Connect
+                </p>
 
                 <h2 style={{
                     fontSize: "40px",
