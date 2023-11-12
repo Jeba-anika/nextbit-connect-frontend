@@ -151,11 +151,11 @@ export const sidebarItems = (role: string) => {
 
   const userSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    // {
-    //   label: <Link href={`/${role}/courses`}>Courses</Link>,
-    //   icon: <TableOutlined />,
-    //   key: `/${role}/courses`,
-    // },
+    {
+      label: <Link href={`/${role}/orders`}>Orders</Link>,
+      icon: <TableOutlined />,
+      key: `/${role}/orders`,
+    },
     // {
     //   label: <Link href={`/${role}/courses/schedule`}>Course schedules</Link>,
     //   icon: <ScheduleOutlined />,

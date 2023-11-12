@@ -3,9 +3,18 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Card } from "antd";
+import { Button, Card, message } from "antd";
 import { registerSchema } from "@/schemas/register";
 import FormTextArea from "@/components/Forms/FormTextArea";
+import { getUserInfo } from "@/services/auth.service";
+import { Districts } from "@/constants/global";
+import FormSelectField from "@/components/Forms/FormSelectField";
+import NBButton from "@/components/ui/NBButton";
+import { orderSchema } from "@/schemas/order";
+import { useCreateOrderMutation } from "@/redux/api/orderApi";
+import UMModal from "@/components/ui/UMModal";
+import { useState } from "react";
+import Link from "next/link";
 
 type IDProps = {
   params: any;
@@ -21,26 +30,40 @@ type FormValues = {
 };
 const OrderPage = ({ params }: IDProps) => {
   const { serviceId } = params;
+  const { userId } = getUserInfo() as any;
+  const [createOrder] = useCreateOrderMutation();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const districtsOptions = Districts?.map((option) => {
+    return {
+      label: option,
+      value: option,
+    };
+  });
 
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
+    message.loading("Processing")
     try {
+      const payload = {
+        ...data,
+        userId,
+        serviceId,
+      };
+      const res:any = await createOrder(payload);
+      console.log(res);
+      if (res?.data?.data?.id) {
+        message.success("Order created Successfully!")
+        setOpen(true);
+      }
     } catch (err: any) {
       console.error(err.message);
     }
   };
+
   return (
     <div className="mt-10">
       <Card className="m-auto" style={{ width: 600 }}>
-        <Form submitHandler={onSubmit} resolver={yupResolver(registerSchema)}>
-          <div>
-            <FormInput
-              name="name"
-              type="text"
-              size="large"
-              label="Name"
-              required
-            />
-          </div>
+        <Form submitHandler={onSubmit} resolver={yupResolver(orderSchema)}>
           <div>
             <FormInput
               name="email"
@@ -73,19 +96,36 @@ const OrderPage = ({ params }: IDProps) => {
               margin: "15px 0px",
             }}
           >
-            <FormInput
-              name="password"
-              type="password"
+            <FormSelectField
               size="large"
-              label="User Password"
-              required
+              name="district"
+              options={districtsOptions}
+              label="District"
+              placeholder="Select"
             />
           </div>
-          <Button type="primary" htmlType="submit">
+          <NBButton>Create Order</NBButton>
+          {/* <Button type="primary" htmlType="submit">
             Register
-          </Button>
+          </Button> */}
         </Form>
       </Card>
+
+      <UMModal
+        title="Order Created Successfully!"
+        isOpen={open}
+        closeModal={() => setOpen(false)}
+        showCancelButton={false}
+        showOkButton={false}
+      >
+        <div>
+          <p className="my-5">Your Order has been created Successfully!</p>
+          <div className="flex justify-end gap-5">
+            <NBButton><Link className="text-white font-bold" href={'/'}>Go to Home</Link></NBButton>
+            <NBButton><Link className="text-white font-bold" href={'/'}>Show All Orders</Link></NBButton>
+          </div>
+        </div>
+      </UMModal>
     </div>
   );
 };

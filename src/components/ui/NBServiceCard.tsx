@@ -1,5 +1,6 @@
 import { Button, Card, Rate } from "antd"
 import Link from 'next/link';
+import NBButton from "./NBButton";
 
 
 type ServiceCardProps = {
@@ -32,7 +33,8 @@ const NBServiceCard = ({service}: {service: ServiceCardProps}) => {
               <p className="text-center my-2">Rating: <Rate disabled defaultValue={service?.rating} /></p>
               <p className="text-red-600 my-4 text-2xl text-center"> {service?.price}৳ /Month </p>
               <div className="w-fit mx-auto">
-              <Button size="large"  type="primary" danger><Link href={`/order/${service?.id}`}>Get Service</Link></Button>
+                <NBButton ><Link className="text-white font-bold" href={`/order/${service?.id}`}>Get Service</Link></NBButton>
+              
               </div>
             </Card>
     );

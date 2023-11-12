@@ -27,7 +27,6 @@ const Navbar = () => {
   const { role } = getUserInfo() as any
 
   const { data, isLoading } = useCategoriesQuery({});
-  console.log(data);
   const router = useRouter();
   const logOut = () => {
     removeUserInfo(authKey);

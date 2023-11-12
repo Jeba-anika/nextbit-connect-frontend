@@ -22,8 +22,8 @@ export type IGenericErrorMessage = {
   message: string;
 };
 
-export interface ICategory{
-  id:string;
+export interface ICategory {
+  id: string;
   title: string;
   createdAt: string;
 }
@@ -39,19 +39,18 @@ export interface IService {
   location: string;
   description: string;
   availability: boolean;
-  rating: number
-  categoryId: string
+  rating: number;
+  categoryId: string;
 }
 
-
 export interface IUser {
-  id: string,
-  name: string
-  email: string
-  role: USER_ROLE,
-  contactNo: string,
-  address: string,
-  district: string
+  id: string;
+  name: string;
+  email: string;
+  role: USER_ROLE;
+  contactNo: string;
+  address: string;
+  district: string;
 }
 
 export interface IDepartment {
@@ -81,6 +80,23 @@ export interface IAdmin {
   designation: string;
   presentAddress: string;
   permanentAddress: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+export interface IOrder {
+  id: string;
+
+  email: string;
+  userId: string;
+  status: string;
+
+  contactNo: string;
+  address: string;
+  district: string;
+  isCancellable: boolean;
+  serviceId: string;
+
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -175,7 +191,6 @@ export interface IBuilding {
   updatedAt: string;
   deletedAt?: null;
 }
-
 
 export interface IRoom {
   id: string;
